@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {RecipeItemsList} from "../ItemsList/RecipeItemsList.jsx";
-import {useDebounce} from "../Hooks/Hooks.jsx";
+import {RecipesItemList} from "../RecipesItemList/RecipesItemList.jsx";
+import {useDebounce} from "../Hooks/useDebounce.jsx";
 import {Dots} from "../Dots/";
 
-export const Recipe = () => {
+export const Recipes = () => {
     const [inputValue, setInputValue] = useState('');
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -24,12 +24,14 @@ export const Recipe = () => {
             setData(null);
         }
     }, [debounceInputValue]);
+
     return (
         <>
             <input className="input" type="text" value={inputValue}
                    onChange={(item) => setInputValue(item.target.value)}/>
-            {data !== null ? <RecipeItemsList data={data}></RecipeItemsList> : null}
+            {data !== null ? <RecipesItemList data={data}></RecipesItemList> : null}
             {isLoading ? <Dots/> : null}
+
         </>
     )
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ItemsWrapper = styled.div`
         display: flex;
         font-family: "sans-serif"`
-export const Titles = styled.div`
+export const Title = styled.div`
         width: 50%;`
-export const Bodies = styled.div`
+export const Body = styled.div`
         width: 50%;`

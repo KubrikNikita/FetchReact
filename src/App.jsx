@@ -1,10 +1,10 @@
 import './App.css'
-import {Recipe} from "./components/Fetch/Recipe.jsx";
+import {Recipes} from "./components/Recipes/Recipes.jsx";
 
 export function App() {
     return (
         <div className="App">
-            <Recipe/>
+            <Recipes/>
 
         </div>
     )
