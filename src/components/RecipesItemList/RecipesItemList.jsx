@@ -1,4 +1,4 @@
-import {RecipesItem} from '../RecipeItem/RecipesItem.jsx';
+import {RecipesItem} from '../RecipesItem';
 
 export const RecipesItemList = ({data}) => {
 

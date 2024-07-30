@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {RecipesItemList} from "../RecipesItemList/RecipesItemList.jsx";
+import {RecipesItemList} from "../RecipesItemList";
 import {useDebounce} from "../Hooks/useDebounce.jsx";
 import {Dots} from "../Dots/";
 
