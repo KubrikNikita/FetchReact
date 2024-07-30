@@ -1,7 +1,6 @@
-import React from 'react';
 import styled, {keyframes} from 'styled-components';
 
-const bounce = keyframes` 0% {
+export const bounce = keyframes` 0% {
                 transform: translate(0px, -10px);
             }
 
@@ -15,13 +14,13 @@ const bounce = keyframes` 0% {
                 height: 20px;
                 transform: translate(0px, -20px);
             }`
-const StyledDots = styled.div`
+export const StyledDots = styled.div`
     display: flex;
     gap: 50px;
     padding-top: 50px;
     align-items: center;
     justify-content: center`
-const Dot = styled.div`
+export const Dot = styled.div`
     width: 20px;
     height: 20px;
     background-color: black;
@@ -34,15 +33,3 @@ const Dot = styled.div`
     &:nth-child(3) {
         animation-delay: 0.4s;
     }`
-
-export const Dots = () => {
-    return (
-        <StyledDots>
-            <Dot/>
-            <Dot/>
-            <Dot/>
-        </StyledDots>
-    );
-};
-
-export default Dots;

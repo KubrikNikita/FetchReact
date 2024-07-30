@@ -1,15 +1,13 @@
 import './App.css'
-import Input from "./components/Input.jsx";
-import Items from "./components/Items.jsx";
-import styled from 'styled-components';
-import Dots from "./components/Dots.jsx";
-function App() {
+import {Recipe} from "./components/Fetch/Recipe.jsx";
+
+export function App() {
     return (
         <div className="App">
-            <Input/>
+            <Recipe/>
 
         </div>
     )
 }
 
-export default App
+

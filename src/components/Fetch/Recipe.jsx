@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import Items from "./Items.jsx";
-import Dots from "./Dots.jsx";
-import useDebounce from "./Hooks.jsx";
+import {RecipeItemsList} from "../ItemsList/RecipeItemsList.jsx";
+import {useDebounce} from "../Hooks/Hooks.jsx";
+import {Dots} from "../Dots/";
 
-export const Input = () => {
+export const Recipe = () => {
     const [inputValue, setInputValue] = useState('');
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const debounce = useDebounce(inputValue);
+    const debounceInputValue = useDebounce(inputValue);
     useEffect(() => {
         const getRecipes = async () => {
             setIsLoading(true);
@@ -18,19 +18,18 @@ export const Input = () => {
             setData(json);
             setIsLoading(false);
         };
-        if (debounce) {
+        if (debounceInputValue) {
             getRecipes();
         } else {
             setData(null);
         }
-    }, [debounce]);
+    }, [debounceInputValue]);
     return (
         <>
             <input className="input" type="text" value={inputValue}
                    onChange={(item) => setInputValue(item.target.value)}/>
-            {data !== null ? <Items data={data}></Items> : null}
+            {data !== null ? <RecipeItemsList data={data}></RecipeItemsList> : null}
             {isLoading ? <Dots/> : null}
         </>
     )
 }
-export default Input;
