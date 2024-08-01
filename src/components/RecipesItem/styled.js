@@ -13,10 +13,13 @@ export const Title = styled.div`
 export const Body = styled.div`
     font-size: 13px;
     padding: 10px 15px 20px;
-    line-height: 21px;`
+    line-height: 21px;
+    display: flex;
+    `
 
 export const ImageWrapper = styled.div`
     padding: 0 12px`
+
 export const Image = styled.img`
     margin-left: 15px;`
 
@@ -80,24 +83,10 @@ export const Protein = styled.li`
     align-items: center;
     padding-bottom: 15px`
 
-export const ProteinDot = styled.div`
+export const Dot = styled.div`
     width: 10px;
     height: 10px;
-    background-color: #7ACA25;
-    border-radius: 20px;
-    margin-right: 5px`
-
-export const FatDot = styled.div`
-    width: 10px;
-    height: 10px;
-    background-color: #FFBE61;
-    border-radius: 20px;
-    margin-right: 5px`
-
-export const CarbDot = styled.div`
-    width: 10px;
-    height: 10px;
-    background-color: #F14647;
+    background-color: ${props => props.color};
     border-radius: 20px;
     margin-right: 5px`
 

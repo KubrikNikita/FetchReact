@@ -24,7 +24,7 @@ export const RecipesItem = ({item}) => {
                         <h1>{item.recipe.label}</h1>
                     </styled.Title>
                     <styled.Body>
-                        <p>{item.recipe.healthLabels.join(' • ')}</p>
+                        {item.recipe.healthLabels.map(item => ` • ${item}`)}
                     </styled.Body>
                 </styled.ItemsWrapper>
             </styled.FirstRow>
@@ -43,21 +43,21 @@ export const RecipesItem = ({item}) => {
                 <styled.SecondColumn>
                     <styled.ProteinFatCardWrapper>
                         <styled.Protein>
-                            <styled.ProteinDot></styled.ProteinDot>
+                            <styled.Dot color={"#7ACA25"}></styled.Dot>
                             <styled.NutrientWrapper>
                                 <styled.NutrientLabel>PROTEIN</styled.NutrientLabel>
                                 <styled.NutrientCount>{protein} g</styled.NutrientCount>
                             </styled.NutrientWrapper>
                         </styled.Protein>
                         <styled.Fat>
-                            <styled.FatDot></styled.FatDot>
+                            <styled.Dot color={"#FFBE61"}></styled.Dot>
                             <styled.NutrientWrapper>
                                 <styled.NutrientLabel>FAT</styled.NutrientLabel>
                                 <styled.NutrientCount>{fat} g</styled.NutrientCount>
                             </styled.NutrientWrapper>
                         </styled.Fat>
                         <styled.Carb>
-                            <styled.CarbDot></styled.CarbDot>
+                            <styled.Dot color={"#F14647"}></styled.Dot>
                             <styled.NutrientWrapper>
                                 <styled.NutrientLabel>CARB</styled.NutrientLabel>
                                 <styled.NutrientCount>{carb} g</styled.NutrientCount>
