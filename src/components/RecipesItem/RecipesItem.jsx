@@ -24,7 +24,7 @@ export const RecipesItem = ({item}) => {
                         <h1>{item.recipe.label}</h1>
                     </styled.Title>
                     <styled.Body>
-                        <p>{item.recipe.healthLabels}</p>
+                        <p>{item.recipe.healthLabels.join(' • ')}</p>
                     </styled.Body>
                 </styled.ItemsWrapper>
             </styled.FirstRow>
