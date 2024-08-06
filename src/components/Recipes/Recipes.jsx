@@ -1,46 +1,43 @@
-import React, {useEffect, useState} from "react";
-import {RecipesItemList} from "../RecipesItemList";
-import {useDebounce} from "../Hooks/useDebounce.jsx";
-import {Dots} from "../Dots/";
+import React, {useEffect} from 'react';
+import {createStore, createEvent, createEffect} from 'effector';
+import {useStore, useEvent, useUnit} from 'effector-react';
+import {RecipesItemList} from '../RecipesItemList';
+import {Dots} from '../Dots/';
+import {
+    $calories,
+    $data,
+    $input,
+    $isLoading, caloriesAccepted,
+    caloriesChanges, dataChanges,
+    inputChanges,
+    startLoading,
+    stopLoading
+} from "./model.js";
+
 
 export const Recipes = () => {
-    const [recipeInputValue, setRecipeInputValue] = useState('');
-    const [kcalInputValue, setKcalInputValue] = useState('');
-    const [data, setData] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const link = 'https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&';
-    const nameLink = 'q=';
-    const calories = '&calories='
-    const debounceRecipeInputValue = useDebounce(recipeInputValue);
-    useEffect(() => {
-        const getRecipes = async () => {
-            setIsLoading(true);
-            const response = await fetch(`${link}${nameLink}${debounceRecipeInputValue}${kcalInputValue ? calories + kcalInputValue : ""}`);
-            const json = await response.json();
-            setData(json);
-            setIsLoading(false);
-        };
-        if (debounceRecipeInputValue) {
-            getRecipes();
-        } else {
-            setData(null);
-        }
-    }, [debounceRecipeInputValue]);
-    const handleChange = async () => {
-        const response = await fetch(`${link}${nameLink}${debounceRecipeInputValue}${kcalInputValue ? calories + kcalInputValue : ""}`)
-        const json = await response.json();
-        setData(json);
-    }
+    const input = useUnit($input);
+    const calories = useUnit($calories);
+    const isLoading = useUnit($isLoading);
+    const data = useUnit($data);
     return (
         <>
-            <input className="input" type="text" value={recipeInputValue}
-                   onChange={(item) => setRecipeInputValue(item.target.value)}/>
-            <input className="input" type="number" placeholder={"Calories"} value={kcalInputValue}
-                   onChange={(item) => setKcalInputValue(item.target.value)}/>
-            <button onClick={handleChange}>Учесть калории</button>
-            {data !== null ? <RecipesItemList data={data}></RecipesItemList> : null}
+            <input
+                className="input"
+                type="text"
+                value={input}
+                onChange={(item) => inputChanges(item.target.value)}
+            />
+            <input
+                className="input"
+                type="number"
+                placeholder="Calories"
+                value={calories}
+                onChange={(item) => caloriesChanges(item.target.value)}
+            />
+            <button onClick={() => caloriesAccepted()}>Учесть калории</button>
+            {data !== "" ? <RecipesItemList data={data}></RecipesItemList> : null}
             {isLoading ? <Dots/> : null}
-
         </>
-    )
-}
+    );
+};
