@@ -1,24 +1,22 @@
-import React, {useEffect} from 'react';
-import {createStore, createEvent, createEffect} from 'effector';
-import {useStore, useEvent, useUnit} from 'effector-react';
+import React from 'react';
+
+import {useUnit} from 'effector-react';
 import {RecipesItemList} from '../RecipesItemList';
 import {Dots} from '../Dots/';
 import {
     $calories,
     $data,
     $input,
-    $isLoading, caloriesAccepted,
-    caloriesChanges, dataChanges,
+    caloriesAccepted,
+    caloriesChanges,
     inputChanges,
-    startLoading,
-    stopLoading
 } from "./model.js";
+import {fetchUserReposFx} from "../../api/index.js";
 
 
 export const Recipes = () => {
     const input = useUnit($input);
     const calories = useUnit($calories);
-    const isLoading = useUnit($isLoading);
     const data = useUnit($data);
     return (
         <>
@@ -37,7 +35,7 @@ export const Recipes = () => {
             />
             <button onClick={() => caloriesAccepted()}>Учесть калории</button>
             {data !== "" ? <RecipesItemList data={data}></RecipesItemList> : null}
-            {isLoading ? <Dots/> : null}
+            {useUnit(fetchUserReposFx.pending) ? <Dots/> : null}
         </>
     );
 };

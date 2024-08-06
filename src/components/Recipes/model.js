@@ -12,11 +12,8 @@ export const $calories = createStore('').on(caloriesChanges, (_, newValue) => ne
 
 export const dataChanges = createEvent()
 export const $data = createStore('').on(dataChanges, (_, newValue) => newValue)
-export const startLoading = createEvent()
-export const stopLoading = createEvent()
-export const $isLoading = createStore(false).on(startLoading, () => true).on(stopLoading, () => false)
 
-const debouncedInput = restore(
+const $debouncedInput = restore(
     debounce({
         source: inputChanges,
         timeout: 1000
@@ -24,15 +21,24 @@ const debouncedInput = restore(
     ''
 )
 
-const $combined = combine(
-    {
-        input: $input,
-        calories: $calories
-    },
-    ({ input, calories }) => ({ q: input, calories: calories })
-);
 sample({
-    source: $combined,
-    clock: [caloriesAccepted, debouncedInput],
-    target: fetchUserReposFx
-});
+    source: $debouncedInput,
+    fn:(text) => {
+        return {
+            q:text
+        }
+    },
+    target:fetchUserReposFx
+})
+
+sample({
+    source:[$calories,$debouncedInput],
+    clock:caloriesAccepted,
+    fn:([cal,debouncedInput]) => {
+        return {
+            calories:cal,
+            q:debouncedInput,
+        }
+    },
+    target:fetchUserReposFx
+})
