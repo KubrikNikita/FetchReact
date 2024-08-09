@@ -23,10 +23,24 @@ export const ImageWrapper = styled.div`
 export const Image = styled.img`
     margin-left: 15px;`
 
+export const CardsContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+flex-direction: column;`
+
+export const CardsWrapper = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 70%;
+flex-direction: column;`
+
 export const CardWrapper = styled.div`
     padding-top: 15px;
     margin-top: 30px;
-    box-shadow: 1px 2px 6px #ccc`
+    box-shadow: 1px 2px 6px #ccc;`
 
 export const FirstRow = styled.div`
     display: flex;`
@@ -122,3 +136,5 @@ export const Elements = styled.ul`
     flex-direction: column;
     height: 100%;
     justify-content: space-between`
+
+

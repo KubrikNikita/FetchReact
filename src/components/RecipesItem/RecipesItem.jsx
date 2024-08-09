@@ -14,6 +14,7 @@ export const RecipesItem = ({item}) => {
     const potassium = Math.floor(item.recipe.totalNutrients.K.quantity)
     const iron = Math.floor(item.recipe.totalNutrients.FE.quantity)
     return (
+
         <styled.CardWrapper>
             <styled.FirstRow>
                 <styled.ImageWrapper>
@@ -95,6 +96,7 @@ export const RecipesItem = ({item}) => {
                 </styled.ThirdColumn>
             </styled.SecondRow>
         </styled.CardWrapper>
+
     );
 }
 

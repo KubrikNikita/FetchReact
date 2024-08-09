@@ -1,4 +1,5 @@
 import {RecipesItem} from '../RecipesItem';
+import {CardsContainer, CardsWrapper} from "../RecipesItem/styled.js";
 
 export const RecipesItemList = ({data}) => {
 
@@ -6,9 +7,10 @@ export const RecipesItemList = ({data}) => {
         return <h1>Ничего не найдено</h1>
     }
     return (
-        <>
-            {data.hits.map(item => <RecipesItem item={item}/>)}
-        </>
-
+        <CardsContainer>
+            <CardsWrapper>
+                {data.hits.map(item => <RecipesItem item={item}/>)}
+            </CardsWrapper>
+        </CardsContainer>
     )
 }
