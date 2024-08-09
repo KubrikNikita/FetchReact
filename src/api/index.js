@@ -4,8 +4,8 @@ const link = 'https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e
 
 
 
-export const fetchUserReposFx = createEffect(async ({ q,calories }) => {
-    const response = await fetch(`${link}q=${q}${calories ? `&calories=${calories}`  : ''}`)
+export const fetchUserReposFx = createEffect(async ({ q,health,calories }) => {
+    const response = await fetch(`${link}q=${q}${health ? `&health=${health.toLowerCase().replace(/ /g, "-")}` : ''}${calories ? `&calories=${calories}`  : ''}`)
     const json = await response.json();
     dataChanges(json)
 });
