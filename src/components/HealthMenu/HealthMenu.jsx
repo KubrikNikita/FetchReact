@@ -1,8 +1,9 @@
 import React from 'react';
 import * as styled from './styled.js'
-import {HealthItem} from "../HealthItem/HealthItem.jsx";
+import {HealthItem} from "./HealthItem.jsx";
 import {$allergiesItemsList, $dietsItemsList, allergiesMenuItems, dietsMenuItems} from "./model.js";
 import {useUnit} from "effector-react/effector-react.umd";
+import {HealthMenuList} from "./HealthMenuList.jsx";
 
 
 export const HealthMenu = ({display}) => {
@@ -22,17 +23,5 @@ export const HealthMenu = ({display}) => {
     )
 }
 
-const HealthMenuList = ({menu, list}) => {
-    return (
-            <styled.menu>
-                {menu.map(item => {
-                    const res = list.includes(item)
-                    return <HealthItem item={item}
-                                       res={res}
-                                       menu={menu}
-                    />;
-                })}
-            </styled.menu>
-    )
-};
+
 export default HealthMenu;

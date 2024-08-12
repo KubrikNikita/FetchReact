@@ -4,7 +4,7 @@ import {
     allergiesMenuItems,
     dietsAddItem,
     dietsDeleteItem
-} from "../HealthMenu/model.js";
+} from "./model.js";
 import * as styled from "./styled.js";
 import React, {useState} from "react";
 
