@@ -1,12 +1,27 @@
-import {addItem, deleteItem} from "../HealthMenu/model.js";
+import {
+    allergiesAddItem,
+    allergiesDeleteItem,
+    allergiesMenuItems,
+    dietsAddItem,
+    dietsDeleteItem
+} from "../HealthMenu/model.js";
 import * as styled from "./styled.js";
 import React, {useState} from "react";
 
-export const HealthItem = ({item}) => {
-    const [isActive, setActive] = useState(false);
-    const toggleActive = () => {
-        setActive(prev => !prev)
-        !isActive ? addItem(item) : deleteItem(item);
+export const HealthItem = ({item, res, menu}) => {
+    const [isActive, setActive] = useState(res);
+    const toggleActive = (add, del) => {
+        setActive(prev => {
+            const newActive = !prev;
+            if (newActive) {
+                add(item)
+            } else {
+                del(item)
+            }
+            return newActive
+        })
+
+
     }
     return (
         <styled.menuItem>
@@ -14,10 +29,10 @@ export const HealthItem = ({item}) => {
                 {item}
                 <styled.checkboxButton
                     active={isActive}
-                    onClick={() => toggleActive()}>
+                    onClick={() => menu === allergiesMenuItems ? toggleActive(allergiesAddItem, allergiesDeleteItem) : toggleActive(dietsAddItem, dietsDeleteItem)}>
                     {isActive ? '✔' : ''}
                 </styled.checkboxButton>
             </styled.styledListItem>
         </styled.menuItem>
-)
+    )
 }

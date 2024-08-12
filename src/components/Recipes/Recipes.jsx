@@ -14,6 +14,7 @@ import {
 import {fetchUserReposFx} from "../../api/index.js";
 import {HealthMenu} from "../HealthMenu/index.js";
 import * as styled from "./styled.js";
+import {allergiesMenuItems, dietsMenuItems} from "../HealthMenu/model.js";
 
 
 
@@ -28,10 +29,10 @@ export const Recipes = () => {
     }
     const toggleDisplayDiets = () => {
         setDisplay(prev => prev === "diets" ? null : "diets");
+
     }
 
-    const allergiesMenuItems = ["Celery-free", "Crustacean-free", "Dairy-free", "Egg-free", "Fish-free", "Gluten-free", "Lupine-free", "Mustard-free", "Peanut-free", "Sesame-free", "Shellfish-free", "Soy-free", "Tree-nut-free", "Wheat-free"]
-    const dietsMenuItems = ["Alcohol-free", "Balanced", "High-Fiber", "High-Protein", "Keto", "Kidney friendly", "Kosher", "Low-Carb", "Low-Fat", "Low-Potassium", "Low-Sodium", "No oil added", "No-Sugar", "Paleo", "Pescatarian", "Pork-free", "Red meat-free", "Sugar-Conscious", "Vegan", "Vegetarian"]
+
 
     return (
         <>
@@ -54,7 +55,7 @@ export const Recipes = () => {
                 />
                 <styled.allergyButton onClick={() => propsAccepted()}>Search with properties</styled.allergyButton>
             </styled.Wrapper>
-            <HealthMenu allergiesMenuItems={allergiesMenuItems} dietsMenuItems={dietsMenuItems} display={display} />
+            <HealthMenu display={display}/>
             {isLoading ? data = '' : null}
             {data !== "" ? <RecipesItemList data={data}></RecipesItemList> : null}
             {isLoading ? <Dots/> : null}
