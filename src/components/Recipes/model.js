@@ -21,15 +21,21 @@ export const $debouncedInput = restore(
     }),
     ''
 )
+
 sample({
     source: $debouncedInput,
-    fn:(text) => {
+    fn: (text) => {
         return {
-            q:text
+            q: text
         }
-    },
-    target:fetchUserReposFx
-})
+    }, target: fetchUserReposFx
+});
+
+
+
+
+
+
 export const $requestData = combine({
         q: $debouncedInput,
         calories: $calories,
