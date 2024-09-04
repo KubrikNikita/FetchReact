@@ -4,13 +4,15 @@ import {
     allergiesMenuItems,
     dietsAddItem,
     dietsDeleteItem
-} from "./model.js";
-import * as styled from "./styled.js";
+} from "./model.ts";
+import * as styled from "./styled.ts";
 import React, {useState} from "react";
 
-export const HealthItem = ({item, res, menu}) => {
+type Props = {item: string, res: boolean, menu: string[]}
+
+export const HealthItem = ({item, res, menu}: Props) => {
     const [isActive, setActive] = useState(res);
-    const toggleActive = (add, del) => {
+    const toggleActive = (add: any, del: any) => {
         setActive(prev => {
             const newActive = !prev;
             if (newActive) {

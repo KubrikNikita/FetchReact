@@ -11,10 +11,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchUserReposFx = void 0;
 const effector_1 = require("effector");
-const model_1 = require("../components/Recipes/model");
+const model_ts_1 = require("../components/Recipes/model.ts");
 const link = 'https://api.edamam.com/search?app_id=900da95e&app_key=40698503668e0bb3897581f4766d77f9&';
-exports.fetchUserReposFx = (0, effector_1.createEffect)((_a) => __awaiter(void 0, [_a], void 0, function* ({ q, health, calories, diet }) {
+exports.fetchUserReposFx = (0, effector_1.createEffect)(({ q, health, calories, diet }) => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield fetch(`${link}q=${q}${health ? `&health=${health.toLowerCase().replace(/ /g, "-")}` : ''}${diet ? `&diet=${diet.toLowerCase().replace(/ /g, '-')}` : ''}${calories ? `&calories=${calories}` : ''}`);
     const json = yield response.json();
-    (0, model_1.dataChanges)(json);
+    (0, model_ts_1.dataChanges)(json);
 }));

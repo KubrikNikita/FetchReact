@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import * as styled from './styled.js'
-import {Elements} from "./styled.js";
+import * as styled from './styled.ts'
+import {Elements} from "./styled.ts";
+import { ArraysOfRecipes } from '../../../interfaces/index.ts';
 
-export const RecipesItem = ({item}) => {
+export const RecipesItem = ({item}: {item: ArraysOfRecipes}) => {
     const kcal = Math.floor(Number(item.recipe.totalNutrients.ENERC_KCAL.quantity) / Number(item.recipe.yield))
     const protein = Math.floor(item.recipe.totalNutrients.PROCNT.quantity)
     const fat = Math.floor(item.recipe.totalNutrients.FAT.quantity)
@@ -25,7 +26,7 @@ export const RecipesItem = ({item}) => {
                         <h1>{item.recipe.label}</h1>
                     </styled.Title>
                     <styled.Body>
-                        {item.recipe.healthLabels.map(item => ` • ${item}`)}
+                        {item.recipe.healthLabels.map((item: any) => ` • ${item}`)}
                     </styled.Body>
                 </styled.ItemsWrapper>
             </styled.FirstRow>

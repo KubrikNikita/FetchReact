@@ -1,12 +1,14 @@
+
 import React from 'react';
-import * as styled from './styled.js'
-import {HealthItem} from "./HealthItem.jsx";
-import {$allergiesItemsList, $dietsItemsList, allergiesMenuItems, dietsMenuItems} from "./model.js";
+import * as styled from './styled.ts'
+import {$allergiesItemsList, $dietsItemsList, allergiesMenuItems, dietsMenuItems} from "./model.ts";
 import {useUnit} from "effector-react/effector-react.umd";
-import {HealthMenuList} from "./HealthMenuList.jsx";
+import {HealthMenuList} from "./HealthMenuList.tsx";
 
-
-export const HealthMenu = ({display}) => {
+type Props  = {
+    
+}
+export const HealthMenu = ({display}: {display: string}) => {
     const allergiesItemsList = useUnit($allergiesItemsList)
     const dietsItemsList = useUnit($dietsItemsList)
     return (

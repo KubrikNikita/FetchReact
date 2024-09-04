@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledDots, Dot} from './styled.js'
+import {StyledDots, Dot} from './styled.ts'
 
 export const Dots = () => {
     return (

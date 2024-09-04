@@ -1,15 +1,15 @@
 import {createEvent, createStore} from "effector";
 
-export const allergiesAddItem = createEvent()
-export const allergiesDeleteItem = createEvent()
-export const dietsAddItem = createEvent()
-export const dietsDeleteItem = createEvent()
-export const $allergiesItemsList = createStore([]).on(allergiesAddItem, (lastValue, newValue) => {
+export const allergiesAddItem = createEvent<string>()
+export const allergiesDeleteItem = createEvent<string>()
+export const dietsAddItem = createEvent<string>()
+export const dietsDeleteItem = createEvent<string>()
+export const $allergiesItemsList = createStore<string[]>([]).on(allergiesAddItem, (lastValue, newValue) => {
     return [...lastValue, newValue]
 }).on(allergiesDeleteItem, (lastValue, newValue) => {
     return lastValue.filter(i => i !== newValue)
 })
-export const $dietsItemsList = createStore([]).on(dietsAddItem, (lastValue, newValue) => {
+export const $dietsItemsList = createStore<string[]>([]).on(dietsAddItem, (lastValue, newValue) => {
     return [...lastValue, newValue]
 }).on(dietsDeleteItem, (lastValue, newValue) => {
     return lastValue.filter(i => i !== newValue)
